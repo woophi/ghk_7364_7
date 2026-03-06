@@ -38,15 +38,1088 @@
   </script>
 
   <!-- End Google Tag Manager -->
-  <script type="module" crossorigin src="/ghk_7364_7/assets/index-f6o6a4Jb.js"></script>
-  <link rel="stylesheet" crossorigin href="/ghk_7364_7/assets/index-C3ZiqRgL.css">
+  <style>
+    /* ===== ALFA-BANK CORE DS TOKENS ===== */
+    :root {
+      --alfa-red: #EF3124;
+      --alfa-red-dark: #CC2B1F;
+      --alfa-black: rgba(3, 3, 6, 0.88);
+      --alfa-secondary: rgba(4, 4, 19, 0.55);
+      --alfa-tertiary: rgba(4, 4, 19, 0.35);
+      --alfa-bg: #F2F3F5;
+      --alfa-card: #FFFFFF;
+      --alfa-border: #E1E3E6;
+      --alfa-green: #27AE60;
+      --alfa-blue: #0B7EFF;
+      --alfa-orange: #FF9800;
+      --alfa-hero-gradient: linear-gradient(180deg, #EAE7FF 0%, #D6D0FF 40%, #F2F3F5 100%);
+      --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--alfa-bg);
+      color: var(--alfa-black);
+      max-width: 375px;
+      margin: 0 auto;
+      line-height: 1.4;
+      padding-bottom: 88px;
+      overflow-x: hidden;
+    }
+
+    /* ===== APP BAR (Core DS: AppBar / Standard) ===== */
+    .appbar {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      background: transparent;
+      position: relative;
+      z-index: 10;
+    }
+
+    .appbar__back {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+      background: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .appbar__back svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* ===== HERO (ref: Карточка_ПДС.png pattern) ===== */
+    .hero {
+      background: var(--alfa-hero-gradient);
+      padding: 0 16px 32px;
+      text-align: center;
+    }
+
+    .hero__illustration {
+      width: 160px;
+      height: 120px;
+      margin: 0 auto 12px;
+      position: relative;
+    }
+
+    /* SVG illustration inline */
+    .hero__illustration svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero__title {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 34px;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+
+    .hero__subtitle {
+      font-size: 17px;
+      line-height: 24px;
+      color: var(--alfa-secondary);
+      margin-bottom: 20px;
+    }
+
+    /* Social proof badge (ref: Карточка_ПДС) */
+    .hero__social-proof {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--alfa-secondary);
+      margin-bottom: 16px;
+    }
+
+    .hero__social-proof svg {
+      width: 14px;
+      height: 14px;
+      color: var(--alfa-green);
+    }
+
+    /* Deadline badge */
+    .hero__deadline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(239, 49, 36, 0.08);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--alfa-red);
+    }
+
+    .hero__deadline svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ===== CONTENT SECTIONS ===== */
+    .section {
+      padding: 24px 16px;
+    }
+
+    .section__title {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 26px;
+      letter-spacing: -0.2px;
+      margin-bottom: 16px;
+    }
+
+    /* ===== CARD (Core DS: Card / Elevated) ===== */
+    .card {
+      background: var(--alfa-card);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    .card+.card {
+      margin-top: 12px;
+    }
+
+    /* ===== STEPS (ref: Карточка_ПДС — Как работает программа) ===== */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      position: relative;
+    }
+
+    .step__indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      width: 32px;
+    }
+
+    .step__num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--alfa-red);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step__line {
+      width: 2px;
+      flex: 1;
+      background: var(--alfa-border);
+      margin: 4px 0;
+    }
+
+    .step:last-child .step__line {
+      display: none;
+    }
+
+    .step__body {
+      padding-bottom: 24px;
+      flex: 1;
+    }
+
+    .step:last-child .step__body {
+      padding-bottom: 0;
+    }
+
+    .step__title {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 24px;
+      padding-top: 4px;
+    }
+
+    .step__desc {
+      font-size: 15px;
+      line-height: 22px;
+      color: var(--alfa-secondary);
+      margin-top: 2px;
+    }
+
+    /* Tooltip (Core DS pattern) */
+    .tooltip-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 15px;
+      color: var(--alfa-blue);
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 8px;
+      border: none;
+      background: none;
+      font-family: var(--font);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .tooltip-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .tooltip-popup {
+      display: none;
+      background: var(--alfa-bg);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-top: 8px;
+      font-size: 15px;
+      line-height: 22px;
+      color: var(--alfa-secondary);
+    }
+
+    .tooltip-popup.is-open {
+      display: block;
+    }
+
+    /* ===== RATE SECTION ===== */
+    /* Tabs (Core DS: Tabs / Primary) */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: var(--font);
+      color: var(--alfa-secondary);
+      background: var(--alfa-card);
+      border: 1px solid var(--alfa-border);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .tab.is-active {
+      background: var(--alfa-black);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    /* Rate display */
+    .rate-display {
+      text-align: center;
+      padding: 20px 0 16px;
+    }
+
+    .rate-display__value {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1;
+      color: var(--alfa-black);
+    }
+
+    .rate-display__label {
+      font-size: 15px;
+      color: var(--alfa-secondary);
+      margin-top: 4px;
+    }
+
+    /* Conditions list */
+    .conditions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .condition {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      line-height: 20px;
+    }
+
+    .condition__icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #E8F5E9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .condition__icon svg {
+      width: 14px;
+      height: 14px;
+      color: var(--alfa-green);
+    }
+
+    /* Example card */
+    .example {
+      background: #FAFAFA;
+      border: 1px solid var(--alfa-border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+
+    .example__title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--alfa-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 14px;
+    }
+
+    .example__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 6px 0;
+    }
+
+    .example__label {
+      font-size: 15px;
+      color: var(--alfa-secondary);
+    }
+
+    .example__val {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .example__row--accent {
+      border-top: 1px dashed var(--alfa-border);
+      margin-top: 8px;
+      padding-top: 14px;
+    }
+
+    .example__row--accent .example__val {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--alfa-green);
+    }
+
+    .example__bonus {
+      text-align: right;
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--alfa-green);
+      font-weight: 500;
+    }
+
+    .rate-footnote {
+      text-align: center;
+      font-size: 13px;
+      color: var(--alfa-tertiary);
+      margin-top: 16px;
+    }
+
+    /* ===== BENEFITS (ref: Карточка_ПДС — Плюсы программы) ===== */
+    .benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .benefit {
+      background: var(--alfa-card);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+    }
+
+    .benefit__icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 22px;
+    }
+
+    .benefit__icon--green {
+      background: #E8F5E9;
+    }
+
+    .benefit__icon--blue {
+      background: #E3F2FD;
+    }
+
+    .benefit__icon--orange {
+      background: #FFF3E0;
+    }
+
+    .benefit__amount {
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 24px;
+    }
+
+    .benefit__desc {
+      font-size: 15px;
+      line-height: 20px;
+      color: var(--alfa-secondary);
+      margin-top: 2px;
+    }
+
+    /* ===== TRUST (Core DS: List / Item pattern) ===== */
+    .trust-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .trust-row {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--alfa-border);
+    }
+
+    .trust-row:last-child {
+      border-bottom: none;
+    }
+
+    .trust-row__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #E8F5E9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .trust-row__icon svg {
+      width: 20px;
+      height: 20px;
+      color: var(--alfa-green);
+    }
+
+    .trust-row__text {
+      font-size: 15px;
+      line-height: 20px;
+      color: var(--alfa-secondary);
+    }
+
+    .trust-row__text strong {
+      color: var(--alfa-black);
+      font-weight: 600;
+    }
+
+    /* ===== FAQ ACCORDION (Core DS: AccordionItem) ===== */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .faq-item {
+      background: var(--alfa-card);
+      border-radius: 16px;
+      border: 1px solid var(--alfa-border);
+      overflow: hidden;
+    }
+
+    .faq-item__header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .faq-item__q {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 24px;
+      flex: 1;
+      padding-right: 12px;
+      color: var(--alfa-black);
+    }
+
+    .faq-item__arrow {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      color: var(--alfa-tertiary);
+    }
+
+    .faq-item.is-open .faq-item__arrow {
+      transform: rotate(180deg);
+    }
+
+    .faq-item__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+    }
+
+    .faq-item.is-open .faq-item__answer {
+      max-height: 500px;
+    }
+
+    .faq-item__answer-inner {
+      padding: 0 16px 16px;
+      font-size: 15px;
+      line-height: 22px;
+      color: var(--alfa-secondary);
+    }
+
+    /* ===== DISCLAIMER ===== */
+    .disclaimer {
+      padding: 16px;
+      font-size: 11px;
+      line-height: 16px;
+      color: var(--alfa-tertiary);
+    }
+
+    /* ===== STICKY CTA (Core DS: Button / Primary, 56px) ===== */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 375px;
+      padding: 12px 16px;
+      padding-bottom: calc(12px + var(--safe-bottom));
+      background: var(--alfa-card);
+      border-top: 1px solid var(--alfa-border);
+      z-index: 100;
+    }
+
+    .btn-primary {
+      width: 100%;
+      height: 56px;
+      background: var(--alfa-black);
+      color: #fff;
+      border: none;
+      border-radius: 16px;
+      font-size: 17px;
+      font-weight: 700;
+      font-family: var(--font);
+      cursor: pointer;
+      letter-spacing: -0.2px;
+      transition: background 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-primary:active {
+      background: rgba(3, 3, 6, 0.95);
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--alfa-border);
+      margin: 0 16px;
+    }
+  </style>
 </head>
 
 <body>
-  <noscript>
-    <div><img src="https://mc.yandex.ru/watch/96171108" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>
-  <div id="root"></div>
+
+  <!-- ===== AppBar (Core DS: AppBar / Standard / Transparent) ===== -->
+  <nav class="appbar">
+    <button class="appbar__back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="rgba(3,3,6,0.88)" stroke-width="2" stroke-linecap="round">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- ===== SCREEN 1: HERO (ref: Карточка_ПДС.png) ===== -->
+  <section class="hero">
+    <div class="hero__illustration">
+      <svg viewBox="0 0 160 120" fill="none">
+        <!-- Simplified bank/savings illustration -->
+        <rect x="40" y="50" width="80" height="55" rx="12" fill="#FFFFFF" opacity="0.9" />
+        <rect x="50" y="42" width="60" height="12" rx="6" fill="rgba(239,49,36,0.15)" />
+        <circle cx="80" cy="32" r="18" fill="rgba(239,49,36,0.12)" />
+        <text x="80" y="38" text-anchor="middle" font-size="20" font-weight="800" fill="#EF3124">%</text>
+        <!-- Growth bars -->
+        <rect x="55" y="72" width="14" height="24" rx="3" fill="rgba(239,49,36,0.2)" />
+        <rect x="73" y="64" width="14" height="32" rx="3" fill="rgba(239,49,36,0.35)" />
+        <rect x="91" y="54" width="14" height="42" rx="3" fill="rgba(239,49,36,0.55)" />
+        <!-- Coin accent -->
+        <circle cx="120" cy="45" r="10" fill="#FFD700" opacity="0.3" />
+        <text x="120" y="49" text-anchor="middle" font-size="10" font-weight="700" fill="#FF9800">&#8381;</text>
+      </svg>
+    </div>
+
+    <h1 class="hero__title">Альфа&#8209;Вклад<br>до&nbsp;36% годовых</h1>
+    <p class="hero__subtitle">Внесите от&nbsp;30&nbsp;000&nbsp;&#8381; на&nbsp;счёт ПДС&nbsp;&mdash;<br>получите
+      повышенную ставку по&nbsp;вкладу</p>
+
+    <div class="hero__social-proof">
+      <svg viewBox="0 0 14 14" fill="currentColor">
+        <path
+          d="M7 0C3.13 0 0 3.13 0 7s3.13 7 7 7 7-3.13 7-7S10.87 0 7 0zm-1.25 9.72L3.32 7.29l.94-.94 1.49 1.49 3.99-3.99.94.94-4.93 4.93z" />
+      </svg>
+      Для новых участников ПДС
+    </div>
+
+    <br>
+
+    <div class="hero__deadline">
+      <svg viewBox="0 0 14 14" fill="currentColor">
+        <path
+          d="M7 .5C3.41.5.5 3.41.5 7S3.41 13.5 7 13.5 13.5 10.59 13.5 7 10.59.5 7 .5zm0 12C3.97 12.5 1.5 10.03 1.5 7S3.97 1.5 7 1.5 12.5 3.97 12.5 7 10.03 12.5 7 12.5zm.5-7H6.5v4l3.5 2.1.5-.82-3-1.78V5.5z" />
+      </svg>
+      Предложение до 31 декабря
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 2: STEPS (ref: Как работает программа) ===== -->
+  <section class="section">
+    <h2 class="section__title">Как получить 36%</h2>
+    <div class="card">
+      <div class="steps">
+        <!-- Step 1 -->
+        <div class="step">
+          <div class="step__indicator">
+            <div class="step__num">1</div>
+            <div class="step__line"></div>
+          </div>
+          <div class="step__body">
+            <div class="step__title">Откройте ПДС</div>
+            <div class="step__desc">Внесите от&nbsp;30&nbsp;000&nbsp;&#8381; на&nbsp;счёт программы долгосрочных
+              сбережений</div>
+            <button class="tooltip-link" onclick="toggleTooltip(this)">
+              <svg viewBox="0 0 16 16" fill="currentColor">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8S12.42 0 8 0zm.75 12h-1.5v-1.5h1.5V12zm0-3h-1.5V4h1.5v5z" />
+              </svg>
+              Что такое ПДС?
+            </button>
+            <div class="tooltip-popup">
+              Программа долгосрочных сбережений с&nbsp;государственной поддержкой. Вы&nbsp;копите, а&nbsp;государство
+              софинансирует ваши взносы и&nbsp;предоставляет налоговые вычеты.
+            </div>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="step">
+          <div class="step__indicator">
+            <div class="step__num">2</div>
+            <div class="step__line"></div>
+          </div>
+          <div class="step__body">
+            <div class="step__title">Откройте вклад</div>
+            <div class="step__desc">От 30&nbsp;000&nbsp;&#8381;</div>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="step">
+          <div class="step__indicator">
+            <div class="step__num">3</div>
+          </div>
+          <div class="step__body">
+            <div class="step__title">Получите повышенную ставку</div>
+            <div class="step__desc">До 36% годовых на&nbsp;1&nbsp;месяц</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 3: RATE + EXAMPLE ===== -->
+  <section class="section">
+    <h2 class="section__title">Ставка по вкладу</h2>
+
+    <!-- Tabs (Core DS: Tabs / Primary) -->
+    <div class="tabs">
+      <button class="tab is-active" onclick="switchTab(this,0)">1 мес</button>
+      <button class="tab" onclick="switchTab(this,1)">3 мес</button>
+      <button class="tab" onclick="switchTab(this,2)">6 мес</button>
+      <button class="tab" onclick="switchTab(this,3)">12 мес</button>
+    </div>
+
+    <div class="card">
+      <div class="rate-display">
+        <div class="rate-display__value" id="rateVal">36%</div>
+        <div class="rate-display__label" id="rateLbl">годовых на 1 месяц</div>
+      </div>
+      <div class="conditions">
+        <div class="condition">
+          <div class="condition__icon">
+            <svg viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M7 0C3.13 0 0 3.13 0 7s3.13 7 7 7 7-3.13 7-7S10.87 0 7 0zm-1.25 9.72L3.32 7.29l.94-.94 1.49 1.49 3.99-3.99.94.94-4.93 4.93z" />
+            </svg>
+          </div>
+          <span>Сумма от 30 000 &#8381;</span>
+        </div>
+        <div class="condition">
+          <div class="condition__icon">
+            <svg viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M7 0C3.13 0 0 3.13 0 7s3.13 7 7 7 7-3.13 7-7S10.87 0 7 0zm-1.25 9.72L3.32 7.29l.94-.94 1.49 1.49 3.99-3.99.94.94-4.93 4.93z" />
+            </svg>
+          </div>
+          <span>Проценты в конце срока</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example -->
+    <div class="example">
+      <div class="example__title">Пример</div>
+      <div class="example__row">
+        <span class="example__label">Вносите на ПДС</span>
+        <span class="example__val">100 000 &#8381;</span>
+      </div>
+      <div class="example__row">
+        <span class="example__label">Открываете вклад</span>
+        <span class="example__val" id="exDep">100 000 &#8381; на 1 мес</span>
+      </div>
+      <div class="example__row example__row--accent">
+        <span class="example__label">Доход по вкладу</span>
+        <span class="example__val" id="exInc">~2 959 &#8381;</span>
+      </div>
+      <div class="example__bonus">+ бонусы ПДС сверху</div>
+    </div>
+
+    <div class="rate-footnote">Ставка с учётом капитализации</div>
+  </section>
+
+  <!-- ===== SCREEN 4: PDS BENEFITS (ref: Плюсы программы) ===== -->
+  <section class="section">
+    <h2 class="section__title">ПДС&nbsp;&mdash; это не&nbsp;только<br>36% по&nbsp;вкладу</h2>
+    <div class="benefits">
+      <div class="benefit">
+        <div class="benefit__icon benefit__icon--green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="6" width="18" height="13" rx="2" stroke="#27AE60" stroke-width="1.5" />
+            <path d="M3 10h18" stroke="#27AE60" stroke-width="1.5" />
+            <circle cx="12" cy="15" r="2" stroke="#27AE60" stroke-width="1.5" />
+          </svg>
+        </div>
+        <div>
+          <div class="benefit__amount">До 36 000 &#8381; в год</div>
+          <div class="benefit__desc">Софинансирование от&nbsp;государства</div>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit__icon benefit__icon--blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 12l2 2 4-4" stroke="#0B7EFF" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <rect x="4" y="4" width="16" height="16" rx="2" stroke="#0B7EFF" stroke-width="1.5" />
+          </svg>
+        </div>
+        <div>
+          <div class="benefit__amount">До 52 000 &#8381; в год</div>
+          <div class="benefit__desc">Налоговый вычет&nbsp;&mdash; возврат НДФЛ с&nbsp;взносов
+            до&nbsp;400&nbsp;000&nbsp;&#8381;</div>
+        </div>
+      </div>
+      <div class="benefit">
+        <div class="benefit__icon benefit__icon--orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 17l4-4 4 4 6-8 4 4" stroke="#FF9800" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div>
+          <div class="benefit__amount">21,56% годовых</div>
+          <div class="benefit__desc">Инвестиционный доход участников ПДС в&nbsp;2024&nbsp;году</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 5: TRUST ===== -->
+  <section class="section">
+    <h2 class="section__title">Ваши деньги защищены</h2>
+    <div class="card">
+      <div class="trust-list">
+        <div class="trust-row">
+          <div class="trust-row__icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M10 1L3 4.5v4C3 13.14 6.01 17.02 10 18c3.99-.98 7-4.86 7-9.5v-4L10 1zm-1 12.5L5.5 10l1.41-1.41L9 10.67l4.09-4.08L14.5 8 9 13.5z" />
+            </svg>
+          </div>
+          <div class="trust-row__text"><strong>Вклад застрахован</strong> АСВ до&nbsp;1&nbsp;400&nbsp;000&nbsp;&#8381;
+          </div>
+        </div>
+        <div class="trust-row">
+          <div class="trust-row__icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M10 1L3 4.5v4C3 13.14 6.01 17.02 10 18c3.99-.98 7-4.86 7-9.5v-4L10 1zm-1 12.5L5.5 10l1.41-1.41L9 10.67l4.09-4.08L14.5 8 9 13.5z" />
+            </svg>
+          </div>
+          <div class="trust-row__text"><strong>ПДС</strong>&nbsp;&mdash; государственная программа</div>
+        </div>
+        <div class="trust-row">
+          <div class="trust-row__icon">
+            <svg viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M10 1L3 4.5v4C3 13.14 6.01 17.02 10 18c3.99-.98 7-4.86 7-9.5v-4L10 1zm-1 12.5L5.5 10l1.41-1.41L9 10.67l4.09-4.08L14.5 8 9 13.5z" />
+            </svg>
+          </div>
+          <div class="trust-row__text"><strong>Партнёр</strong>&nbsp;&mdash; НПФ Альфа, лицензия ЦБ&nbsp;РФ</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 6: FAQ (Core DS: Accordion) ===== -->
+  <section class="section">
+    <h2 class="section__title">Частые вопросы</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-item__header" onclick="toggleFaq(this)">
+          <span class="faq-item__q">На какой срок открывается ПДС?</span>
+          <svg class="faq-item__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round">
+            <path d="M5 7.5L10 12.5L15 7.5" />
+          </svg>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">ПДС открывается на 15 лет или до достижения пенсионного возраста: 55 лет
+            для женщин, 60 лет для мужчин. Всё это время вы получаете софинансирование от государства и налоговые
+            вычеты.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__header" onclick="toggleFaq(this)">
+          <span class="faq-item__q">Какую сумму можно положить на вклад?</span>
+          <svg class="faq-item__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round">
+            <path d="M5 7.5L10 12.5L15 7.5" />
+          </svg>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Минимум 30&nbsp;000&nbsp;&#8381;, максимум&nbsp;&mdash; сумма вашего
+            первого взноса на&nbsp;ПДС. Если вы&nbsp;внесли на&nbsp;ПДС 100&nbsp;000&nbsp;&#8381;, вклад можно открыть
+            на&nbsp;сумму до&nbsp;100&nbsp;000&nbsp;&#8381;.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__header" onclick="toggleFaq(this)">
+          <span class="faq-item__q">Можно ли пополнять или снимать?</span>
+          <svg class="faq-item__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round">
+            <path d="M5 7.5L10 12.5L15 7.5" />
+          </svg>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Вклад без пополнения и снятия. Деньги с&nbsp;процентами можно забрать
+            по&nbsp;окончании срока.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__header" onclick="toggleFaq(this)">
+          <span class="faq-item__q">Какая ставка на другие сроки?</span>
+          <svg class="faq-item__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round">
+            <path d="M5 7.5L10 12.5L15 7.5" />
+          </svg>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Ставка с&nbsp;учётом капитализации: 1&nbsp;мес&nbsp;&mdash; 36%,
+            2&nbsp;мес&nbsp;&mdash; 27%, 3&nbsp;мес&nbsp;&mdash; 21%, 6&nbsp;мес&nbsp;&mdash; 18%,
+            12&nbsp;мес&nbsp;&mdash; 15%. Максимальная ставка при сроке 1&nbsp;месяц.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__header" onclick="toggleFaq(this)">
+          <span class="faq-item__q">Как начисляются проценты?</span>
+          <svg class="faq-item__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round">
+            <path d="M5 7.5L10 12.5L15 7.5" />
+          </svg>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">Ежемесячно с&nbsp;капитализацией: проценты прибавляются к&nbsp;сумме
+            вклада, и&nbsp;в&nbsp;следующем месяце начисления идут на&nbsp;большую сумму.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__header" onclick="toggleFaq(this)">
+          <span class="faq-item__q">С какого возраста можно получить деньги из ПДС?</span>
+          <svg class="faq-item__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round">
+            <path d="M5 7.5L10 12.5L15 7.5" />
+          </svg>
+        </button>
+        <div class="faq-item__answer">
+          <div class="faq-item__answer-inner">С&nbsp;55 лет для женщин, с&nbsp;60 лет для мужчин, либо через 15 лет
+            с&nbsp;момента заключения договора.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    Партнёр Банка&nbsp;&mdash; АО &laquo;НПФ Альфа&raquo;, лицензия ЦБ&nbsp;РФ &#8470;&nbsp;446 от&nbsp;14.11.2024.
+    Сайт: alfanpf.ru. Перед заключением договора необходимо ознакомиться с&nbsp;уставом, правилами формирования
+    долгосрочных сбережений, ключевым информационным документом. Возможно увеличение или уменьшение дохода
+    от&nbsp;размещения пенсионных резервов. Результаты инвестирования в&nbsp;прошлом не&nbsp;определяют доходов
+    в&nbsp;будущем.
+  </div>
+
+  <!-- ===== STICKY CTA (Core DS: Button / Primary / 56px) ===== -->
+  <div class="sticky-cta">
+    <button class="btn-primary">Открыть ПДС и вклад</button>
+  </div>
+
+  <script>
+    const rates = [
+      { val: '36%', lbl: 'годовых на 1 месяц', dep: '100 000 \u20BD на 1 мес', inc: '~2 959 \u20BD' },
+      { val: '21%', lbl: 'годовых на 3 месяца', dep: '100 000 \u20BD на 3 мес', inc: '~5 175 \u20BD' },
+      { val: '18%', lbl: 'годовых на 6 месяцев', dep: '100 000 \u20BD на 6 мес', inc: '~9 010 \u20BD' },
+      { val: '15%', lbl: 'годовых на 12 месяцев', dep: '100 000 \u20BD на 12 мес', inc: '~15 000 \u20BD' },
+    ];
+
+    function switchTab(el, i) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('is-active'));
+      el.classList.add('is-active');
+      const d = rates[i];
+      document.getElementById('rateVal').textContent = d.val;
+      document.getElementById('rateLbl').textContent = d.lbl;
+      document.getElementById('exDep').textContent = d.dep;
+      document.getElementById('exInc').textContent = d.inc;
+    }
+
+    function toggleTooltip(el) {
+      el.nextElementSibling.classList.toggle('is-open');
+    }
+
+    function toggleFaq(btn) {
+      btn.parentElement.classList.toggle('is-open');
+    }
+  </script>
+
+  <!-- Google Analytics Events -->
+  <script>
+    // 3.1 Показ экрана лендинга
+    gtag('event', 'landing_page_view', { page: "landing_pds_deposit" });
+
+    // 3.2 Клик "Назад"
+    document.querySelector('.appbar__back').addEventListener('click', function () {
+      gtag('event', 'landing_click_back', { element: "appbar_back" });
+    });
+
+    // 3.3 Клик CTA "Открыть ПДС и вклад"
+    document.querySelector('.btn-primary').addEventListener('click', function () {
+      gtag('event', 'landing_start_open_bundle', { element: "sticky_cta" });
+    });
+
+    // 3.4 Клик "Что такое ПДС?" (Tooltip)
+    document.querySelector('.tooltip-link').addEventListener('click', function () {
+      gtag('event', 'landing_click_tooltip_pds', { element: "tooltip_what_is_pds" });
+    });
+
+    // 3.5–3.8 Клик на табы сроков вклада
+    var tabNames = ["1_month", "3_months", "6_months", "12_months"];
+    document.querySelectorAll('.tab').forEach(function (tab, index) {
+      tab.addEventListener('click', function () {
+        gtag('event', 'landing_click_tab', { tab: tabNames[index] });
+      });
+    });
+
+    // 3.9–3.14 Клик на FAQ-аккордеоны
+    var faqQuestions = ["srok_pds", "summa_vklad", "popolnenie_snyatie", "stavka_sroki", "nachislenie_procentov", "vozrast_pds"];
+    document.querySelectorAll('.faq-item__header').forEach(function (header, index) {
+      header.addEventListener('click', function () {
+        gtag('event', 'landing_bundle_faq', { faq: String(index + 1), question: faqQuestions[index] });
+      });
+    });
+
+    // 3.15–3.20 Скролл-события (IntersectionObserver)
+    var scrollSections = [
+      { selector: '.steps', event: 'landing_scroll_to_steps', params: { section: "how_to_get_36" } },
+      { selector: '.tabs', event: 'landing_scroll_to_rate', params: { section: "rate_deposit" } },
+      { selector: '.benefits', event: 'landing_scroll_to_benefits', params: { section: "pds_benefits" } },
+      { selector: '.trust-list', event: 'landing_scroll_to_trust', params: { section: "trust" } },
+      { selector: '.faq-list', event: 'landing_scroll_to_faq', params: { section: "faq" } },
+      { selector: '.disclaimer', event: 'landing_scroll_to_bottom', params: { section: "disclaimer" } }
+    ];
+
+    var scrollObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var cfg = scrollSections.find(function (s) {
+            return document.querySelector(s.selector) === entry.target;
+          });
+          if (cfg) {
+            gtag('event', cfg.event, cfg.params);
+            scrollObserver.unobserve(entry.target);
+          }
+        }
+      });
+    }, { threshold: 0.3 });
+
+    scrollSections.forEach(function (s) {
+      var el = document.querySelector(s.selector);
+      if (el) scrollObserver.observe(el);
+    });
+  </script>
+
 </body>
 
 </html>
