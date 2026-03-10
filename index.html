@@ -1062,6 +1062,8 @@
     const root = document.getElementById('root');
 
     openBundleBtn?.addEventListener('click', async function () {
+      window.gtag('event', '7364_start_open_bundle', { var: 'var7' });
+
       if (landing) {
         landing.style.display = 'none';
       }
@@ -1081,67 +1083,13 @@
 
   <!-- Google Analytics Events -->
   <script>
-    // 3.1 Показ экрана лендинга
-    gtag('event', 'landing_page_view', { page: "landing_pds_deposit" });
-
-    // 3.2 Клик "Назад"
-    document.querySelector('.appbar__back').addEventListener('click', function () {
-      gtag('event', 'landing_click_back', { element: "appbar_back" });
-    });
-
-    // 3.3 Клик CTA "Открыть ПДС и вклад"
-    document.querySelector('.btn-primary').addEventListener('click', function () {
-      gtag('event', 'landing_start_open_bundle', { element: "sticky_cta" });
-    });
-
-    // 3.4 Клик "Что такое ПДС?" (Tooltip)
-    document.querySelector('.tooltip-link').addEventListener('click', function () {
-      gtag('event', 'landing_click_tooltip_pds', { element: "tooltip_what_is_pds" });
-    });
-
-    // 3.5–3.8 Клик на табы сроков вклада
-    var tabNames = ["1_month", "3_months", "6_months", "12_months"];
-    document.querySelectorAll('.tab').forEach(function (tab, index) {
-      tab.addEventListener('click', function () {
-        gtag('event', 'landing_click_tab', { tab: tabNames[index] });
-      });
-    });
 
     // 3.9–3.14 Клик на FAQ-аккордеоны
     var faqQuestions = ["srok_pds", "summa_vklad", "popolnenie_snyatie", "stavka_sroki", "nachislenie_procentov", "vozrast_pds"];
     document.querySelectorAll('.faq-item__header').forEach(function (header, index) {
       header.addEventListener('click', function () {
-        gtag('event', 'landing_bundle_faq', { faq: String(index + 1), question: faqQuestions[index] });
+        window.gtag('event', '7364_bundle_faq', { faq: String(index + 1), var: 'var7' });
       });
-    });
-
-    // 3.15–3.20 Скролл-события (IntersectionObserver)
-    var scrollSections = [
-      { selector: '.steps', event: 'landing_scroll_to_steps', params: { section: "how_to_get_36" } },
-      { selector: '.tabs', event: 'landing_scroll_to_rate', params: { section: "rate_deposit" } },
-      { selector: '.benefits', event: 'landing_scroll_to_benefits', params: { section: "pds_benefits" } },
-      { selector: '.trust-list', event: 'landing_scroll_to_trust', params: { section: "trust" } },
-      { selector: '.faq-list', event: 'landing_scroll_to_faq', params: { section: "faq" } },
-      { selector: '.disclaimer', event: 'landing_scroll_to_bottom', params: { section: "disclaimer" } }
-    ];
-
-    var scrollObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var cfg = scrollSections.find(function (s) {
-            return document.querySelector(s.selector) === entry.target;
-          });
-          if (cfg) {
-            gtag('event', cfg.event, cfg.params);
-            scrollObserver.unobserve(entry.target);
-          }
-        }
-      });
-    }, { threshold: 0.3 });
-
-    scrollSections.forEach(function (s) {
-      var el = document.querySelector(s.selector);
-      if (el) scrollObserver.observe(el);
     });
   </script>
 
